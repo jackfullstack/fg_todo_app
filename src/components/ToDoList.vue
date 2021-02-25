@@ -8,7 +8,7 @@
             </v-btn>
         </v-toolbar>
         <v-list>
-            <to-do-item></to-do-item>
+            <to-do-item  :toDoList="toDoList"></to-do-item>
         </v-list>
     </v-card>
 </template>
@@ -17,7 +17,14 @@
 import ToDoItem from './ToDoItem.vue'
     export default {
         name: 'ToDoList',
-         components: { ToDoItem },
+        components: { ToDoItem },
+        props: {
+            toDoList: {
+                required: true,
+                type: Array
+            }
+        }
+
     }
 </script>
 

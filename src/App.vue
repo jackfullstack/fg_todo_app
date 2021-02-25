@@ -12,12 +12,12 @@
           <v-row dense>
             <v-col cols="12">
               <v-card class="mt-12">
-                <to-do-form></to-do-form>
+                <to-do-form ></to-do-form>
               </v-card>
             </v-col>
             <v-col cols="12">
               <v-card class="my-12">
-                <to-do-list></to-do-list> 
+                <to-do-list :toDoList="toDoList"></to-do-list> 
               </v-card>
             </v-col>
           </v-row>
@@ -40,6 +40,21 @@ export default {
   },
 
   data: () => ({
+    toDoList : [{
+      item_id: '1',
+      item_title: 'Get a job at FG',
+      item_priority: 'Life Changing **',
+    },
+    {
+      item_id: '2',
+      item_title: 'Get a job somewhere else',
+      item_priority: 'Meh :/',
+    },
+    {
+      item_id: '3',
+      item_title: 'Get a job',
+      item_priority: 'Important!',
+    }]
   }),
 };
 </script>
