@@ -1,7 +1,7 @@
 <template>
-    <v-card max-width="600" class="mx-auto">
+    <v-card class="mx-auto">
         <v-toolbar color="orange" dark>
-            <v-toolbar-title>TODOS</v-toolbar-title>
+            <v-toolbar-title>YOUR TODOs</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn icon>
                 <v-icon>mdi-delete-forever</v-icon>
@@ -17,7 +17,7 @@
 import ToDoItem from './ToDoItem.vue'
     export default {
         name: 'ToDoList',
-        components: { ToDoItem },
+         components: { ToDoItem },
     }
 </script>
 
