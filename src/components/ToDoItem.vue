@@ -2,7 +2,7 @@
     <div>
         <v-list-item> 
             <v-list-item-avatar>
-                            <v-icon>
+                        <v-icon>
                                 mdi-alarm-light-outline
                             </v-icon>
                         </v-list-item-avatar>
@@ -16,7 +16,7 @@
                             </v-btn>
                         </v-list-item-action>
                         <v-list-item-action>
-                            <v-btn icon >
+                            <v-btn icon @click="deleteToDo" >
                                 <v-icon>mdi-delete-circle</v-icon>
                             </v-btn>
                 </v-list-item-action> 
@@ -40,6 +40,11 @@
                     type: String,
                     required: true
             }
+        },
+        methods: {
+            deleteToDo() {
+                this.$emit('item-deleted');
+            },
         },
     }
 </script>
