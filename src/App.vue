@@ -55,37 +55,27 @@ export default {
     ToDoForm,
     ToDoItem
   },
+  data() {
+    return {
+      toDoList : [
+        { id:uniqueId('todo-'), title: 'Go to the Amsterdam Vue convention', priority: 'Important!' },
+        { id:uniqueId('todo-'), title: 'Refactor code', priority: 'Important!' },
+        { id:uniqueId('todo-'), title: 'Have a beer, it is Friday', priority: 'Important!' },
+        { id:uniqueId('todo-'), title: 'Do the washing-up', priority: 'Meh :(' },
+        { id:uniqueId('todo-'), title: 'Get a job at Forge Rock', priority: 'Life Changing!!' }
+      ]
+    }
+  },
   methods: {
     addToDo(newTitle, newPriority) {
       this.toDoList.push({ id:uniqueId('todo-'), title: newTitle, priority: newPriority });
     },
     deleteToDo(toDoId) {
-      const itemIndex = this.toDoList.find(item => item.id === toDoId);
+      const itemIndex = this.toDoList.findIndex(item => item.id === toDoId);
       this.toDoList.splice(itemIndex, 1);
     },
     clearToDoList() {
       this.toDoList = [];
-    }
-  },
-  data() {
-    return {
-      toDoList : [
-          {
-            id: '1',
-            title: 'Get a job at FG',
-            priority: 'Life Changing **',
-          },
-          {
-            id: '2',
-            title: 'Get a job somewhere else',
-            priority: 'Meh :/',
-          },
-          {
-            id: '3',
-            title: 'Get a job',
-            priority: 'Important!',
-          }
-      ]
     }
   },
 };

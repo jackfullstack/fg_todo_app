@@ -1,6 +1,6 @@
 <template>
        <v-card class="mx-auto"> 
-        <v-form @submit.prevent="onSubmit">
+        <v-form @submit.prevent="onSubmit" ref="form">
             <v-toolbar color="orange" dark>
                 <v-toolbar-title>ADD A TODO</v-toolbar-title>
             </v-toolbar>
@@ -19,6 +19,12 @@
                                     mdi-checkbox-marked-circle
                             </v-icon>
                         </v-btn>
+                        <v-btn type="button" class="ma-2" color="orange darken-2" @click="clearForm" dark>
+                            clear
+                            <v-icon dark right>
+                                    mdi-minus-circle
+                            </v-icon>
+                        </v-btn>
                     </v-col>
                 </v-row>
             </v-container>            
@@ -29,17 +35,29 @@
 <script>
     export default {
         name: 'ToDoForm',
-        methods: {
+        methods: {       
+            resetValidation () {
+                this.$refs.form.resetValidation()   
+            },
+            validate () {
+                this.$refs.form.validate()
+            },
+            clearForm () {
+                this.newTitle = "";
+                this.newPriority = "";
+                this.resetValidation();
+            },
             onSubmit() {
-                if(this.newTitle === "") {
+                if(this.newTitle === "" || this.newPriority === "") {
+                    alert("Oops! Fields can't be blank, how will you know what todo?")
                     return;
                 }
-                if(this.newPriority === "") {
+                if(this.newTitle.length > 100) {
+                    alert("Oops! 100 words max!")
                     return;
                 }
                 this.$emit('todo-added', this.newTitle,  this.newPriority);
-                this.newTitle = "";
-                this.newPriority = "";    
+                this.clearForm();   
             }
         },
         data() {
@@ -53,14 +71,13 @@
                 ],
                 titleRules: [
                     v => !!v || 'TODO description is required',
-                    v => v.length <= 100 || 'Length should be less than 100 characters',
+                    v => v.length <= 100 || 'Length should be less than 100 characters'
                 ],
                 priorityRules: [
-                    v => !!v || 'Priority selection is required',
-                    
-                ],
+                    v => !!v || 'Priority selection is required',    
+                ]
             }
-        },
+        }
     }
 </script>
 
