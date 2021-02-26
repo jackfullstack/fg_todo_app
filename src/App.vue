@@ -17,7 +17,22 @@
             </v-col>
             <v-col cols="12">
               <v-card class="my-12">
-                <to-do-list :toDoList="toDoList" ></to-do-list> 
+                <v-card class="mx-auto">
+                  <v-toolbar color="orange" dark>
+                      <v-toolbar-title>YOUR TODOs</v-toolbar-title>
+                      <v-spacer></v-spacer>
+                      <v-btn icon>
+                          <v-icon>mdi-delete-forever</v-icon>
+                      </v-btn>
+                  </v-toolbar>
+                  <v-list>
+                      <ul v-for="item in toDoList" :key="item.id">
+                        <to-do-item
+                          :id="item.id" :priority="item.priority" :title="item.title" 
+                        ></to-do-item>
+                      </ul>
+                  </v-list>
+                </v-card> 
               </v-card>
             </v-col>
           </v-row>
@@ -29,43 +44,41 @@
 
 <script>
 import ToDoForm from './components/ToDoForm.vue';
-import ToDoList from './components/ToDoList.vue';
 import uniqueId from 'lodash.uniqueid';
+import ToDoItem from './components/ToDoItem.vue';
 
 export default {
   name: 'App',
 
   components: {
-    ToDoList,
-    ToDoForm
+    ToDoForm,
+    ToDoItem
   },
   methods: {
     addToDo(newTitle, newPriority) {
       this.toDoList.push({ id:uniqueId('todo-'), title: newTitle, priority: newPriority });
-    },
-    deleteSingleItem(toDoId) {
-      const itemIndex = this.toDoList.find(item => item.id === toDoId);
-      this.toDoList.splice(itemIndex, 1);
-    },
+    }
   },
 
   data() {
     return {
-      toDoList : [{
-      id: '1',
-      title: 'Get a job at FG',
-      priority: 'Life Changing **',
-    },
-    {
-      id: '2',
-      title: 'Get a job somewhere else',
-      priority: 'Meh :/',
-    },
-    {
-      id: '3',
-      title: 'Get a job',
-      priority: 'Important!',
-    }]
+      toDoList : [
+          {
+            id: '1',
+            title: 'Get a job at FG',
+            priority: 'Life Changing **',
+          },
+          {
+            id: '2',
+            title: 'Get a job somewhere else',
+            priority: 'Meh :/',
+          },
+          {
+            id: '3',
+            title: 'Get a job',
+            priority: 'Important!',
+          }
+      ]
     }
   },
 };
