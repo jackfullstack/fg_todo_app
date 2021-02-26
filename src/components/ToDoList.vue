@@ -8,14 +8,16 @@
             </v-btn>
         </v-toolbar>
         <v-list>
-            <to-do-item  :toDoList="toDoList"></to-do-item>
+            <to-do-item :toDoList="toDoList"></to-do-item>
         </v-list>
     </v-card>
 </template>
 
 <script>
-import ToDoItem from './ToDoItem.vue'
+import ToDoItem from './ToDoItem.vue';
+
     export default {
+
         name: 'ToDoList',
         components: { ToDoItem },
         props: {
@@ -23,9 +25,11 @@ import ToDoItem from './ToDoItem.vue'
                 required: true,
                 type: Array
             }
+        },
+        methods: {
         }
-
     }
+
 </script>
 
 <style scoped>

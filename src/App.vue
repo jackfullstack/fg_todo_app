@@ -12,12 +12,12 @@
           <v-row dense>
             <v-col cols="12">
               <v-card class="mt-12">
-                <to-do-form ></to-do-form>
+                <to-do-form @todo-added="addToDo" @delete-item="deleteSingleItem(item.id)"></to-do-form>
               </v-card>
             </v-col>
             <v-col cols="12">
               <v-card class="my-12">
-                <to-do-list :toDoList="toDoList"></to-do-list> 
+                <to-do-list :toDoList="toDoList" ></to-do-list> 
               </v-card>
             </v-col>
           </v-row>
@@ -30,6 +30,7 @@
 <script>
 import ToDoForm from './components/ToDoForm.vue';
 import ToDoList from './components/ToDoList.vue';
+import uniqueId from 'lodash.uniqueid';
 
 export default {
   name: 'App',
@@ -38,23 +39,34 @@ export default {
     ToDoList,
     ToDoForm
   },
+  methods: {
+    addToDo(newTitle, newPriority) {
+      this.toDoList.push({ id:uniqueId('todo-'), title: newTitle, priority: newPriority });
+    },
+    deleteSingleItem(toDoId) {
+      const itemIndex = this.toDoList.find(item => item.id === toDoId);
+      this.toDoList.splice(itemIndex, 1);
+    },
+  },
 
-  data: () => ({
-    toDoList : [{
-      item_id: '1',
-      item_title: 'Get a job at FG',
-      item_priority: 'Life Changing **',
+  data() {
+    return {
+      toDoList : [{
+      id: '1',
+      title: 'Get a job at FG',
+      priority: 'Life Changing **',
     },
     {
-      item_id: '2',
-      item_title: 'Get a job somewhere else',
-      item_priority: 'Meh :/',
+      id: '2',
+      title: 'Get a job somewhere else',
+      priority: 'Meh :/',
     },
     {
-      item_id: '3',
-      item_title: 'Get a job',
-      item_priority: 'Important!',
+      id: '3',
+      title: 'Get a job',
+      priority: 'Important!',
     }]
-  }),
+    }
+  },
 };
 </script>

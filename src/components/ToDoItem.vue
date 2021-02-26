@@ -7,8 +7,8 @@
                     </v-icon>
                 </v-list-item-avatar>
                 <v-list-item-content>
-                    <v-list-item-title>{{ item.item_title }}</v-list-item-title>
-                    <v-list-item-subtitle>{{ item.item_priority }}</v-list-item-subtitle>
+                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    <v-list-item-subtitle>{{ item.priority }}</v-list-item-subtitle>
                 </v-list-item-content>
                 <v-list-item-action>
                     <v-btn icon>
@@ -16,7 +16,7 @@
                     </v-btn>
                 </v-list-item-action>
                 <v-list-item-action>
-                    <v-btn icon>
+                    <v-btn icon >
                         <v-icon>mdi-delete-circle</v-icon>
                     </v-btn>
                 </v-list-item-action>
@@ -32,7 +32,7 @@
                 required: true,
                 type: Array
             }
-        }
+        },
     }
 </script>
 

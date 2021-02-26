@@ -5,7 +5,7 @@ A simple TODO app to add todo items to a todos list with a priority.
 Acc criteria:
 1. User to be able to Add a TODO with a selected priority level
 2. User to be able to view a list of their added TODO'S with selected priority level
-3. User to be able to delete a dingle TODO from their list of TODO's
+3. User to be able to delete a single TODO from their list of TODO's
 4. User to be able to delete the entire list of TODO's
 
 ## Project setup
