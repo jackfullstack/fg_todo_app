@@ -4,7 +4,7 @@
       <v-app-bar-nav-icon>
         <v-icon>mdi-airballoon</v-icon>
       </v-app-bar-nav-icon>
-      <v-app-bar-title>Todo Bristol</v-app-bar-title>
+      <v-app-bar-title data-test="appTitleAvalialable">{{ appTitle }}</v-app-bar-title>
     </v-app-bar>
     <v-main>
       <v-card max-width="1000" class="mx-auto my-10 px-5" >
@@ -12,7 +12,7 @@
           <v-row dense>
             <v-col cols="12">
               <v-card class="mt-12">
-                <to-do-form @todo-added="addToDo"></to-do-form>
+                <to-do-form @todo-added="addToDo" data-test='todoForm'></to-do-form>
               </v-card>
             </v-col>
             <v-col cols="12">
@@ -25,7 +25,7 @@
                           <v-icon>mdi-delete-forever</v-icon>
                       </v-btn>
                   </v-toolbar>
-                  <v-list>
+                  <v-list data-test='todoList'>
                       <ul v-for="item in toDoList" :key="item.id">
                         <to-do-item
                           :id="item.id" :priority="item.priority" :title="item.title" 
@@ -57,10 +57,9 @@ export default {
   },
   data() {
     return {
+      appTitle: "TodoApp",
       toDoList : [
         { id:uniqueId('todo-'), title: 'Go to the Amsterdam Vue convention', priority: 'Important!' },
-        { id:uniqueId('todo-'), title: 'Refactor code', priority: 'Important!' },
-        { id:uniqueId('todo-'), title: 'Have a beer, it is Friday', priority: 'Important!' },
         { id:uniqueId('todo-'), title: 'Do the washing-up', priority: 'Meh :(' },
         { id:uniqueId('todo-'), title: 'Get a job at Forge Rock', priority: 'Life Changing!!' }
       ]
@@ -78,5 +77,15 @@ export default {
       this.toDoList = [];
     }
   },
+  watch: {
+    toDoList: {
+      handler() {
+        localStorage.setItem('toDoList', JSON.stringify(this.toDoList));
+      }
+    }
+  },
+  mounted() {
+    if (localStorage.getItem('toDoList')) this.toDoList = JSON.parse(localStorage.getItem('toDoList'));
+  }
 };
 </script>

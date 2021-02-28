@@ -7,19 +7,19 @@
             <v-container>
                 <v-row class="mx-auto">
                     <v-col cols="4">
-                        <v-text-field label="TODO" v-model.lazy.trim="newTitle" :rules="titleRules" required></v-text-field>
+                        <v-text-field label="TODO" v-model.lazy.trim="newTitle" :rules="titleRules" required data-test="todoText"></v-text-field>
                     </v-col>
                     <v-col cols="4">
-                        <v-select label="Priority" :items="items" v-model="newPriority" :rules="priorityRules" required></v-select>
+                        <v-select label="Priority" :items="items" v-model="newPriority" item-text="priority" :rules="priorityRules" required data-test="prioritySelect"></v-select>
                     </v-col>
                     <v-col cols="4">
-                        <v-btn type="submit" class="ma-2" color="orange darken-2" dark>
+                        <v-btn type="submit" class="ma-2" color="orange darken-2" data-test="submitButton" dark>
                             Add
                             <v-icon dark right>
                                     mdi-checkbox-marked-circle
                             </v-icon>
                         </v-btn>
-                        <v-btn type="button" class="ma-2" color="orange darken-2" @click="clearForm" dark>
+                        <v-btn type="button" class="ma-2" color="orange darken-2" @click="clearForm" data-test="clearButton" dark>
                             clear
                             <v-icon dark right>
                                     mdi-minus-circle
@@ -65,9 +65,9 @@
                 newTitle: '',
                 newPriority: '',
                 items: [
-                    'Life Changing!!',
-                    'Important!',
-                    'Meh :(',
+                    { priority: 'Life Changing!!'},
+                    { priority: 'Important!'},
+                    { priority: 'Meh :('}
                 ],
                 titleRules: [
                     v => !!v || 'TODO description is required',
