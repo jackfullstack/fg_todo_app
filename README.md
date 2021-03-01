@@ -8,7 +8,7 @@ Acc criteria:
 4. User to be able to delete the entire list of TODO's
 
 Bonus criteria:
-1. ToDoList saves to local storrage and persists when page is refreshed
+1. ToDoList saves to local session storrage and persists when page is refreshed, but resets when session is ended.
 2. Basic functionality partly tested with unit and e2e tests
 
 
