@@ -80,12 +80,12 @@ export default {
   watch: {
     toDoList: {
       handler() {
-        localStorage.setItem('toDoList', JSON.stringify(this.toDoList));
+        sessionStorage.setItem('toDoList', JSON.stringify(this.toDoList));
       }
     }
   },
   mounted() {
-    if (localStorage.getItem('toDoList')) this.toDoList = JSON.parse(localStorage.getItem('toDoList'));
+    if (sessionStorage.getItem('toDoList')) this.toDoList = JSON.parse(sessionStorage.getItem('toDoList'));
   }
 };
 </script>

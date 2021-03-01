@@ -11,11 +11,6 @@
                             <v-list-item-subtitle>{{ priority }}</v-list-item-subtitle>
                         </v-list-item-content>
                         <v-list-item-action>
-                            <v-btn icon>
-                                <v-icon>mdi-circle-edit-outline</v-icon>
-                            </v-btn>
-                        </v-list-item-action>
-                        <v-list-item-action>
                             <v-btn icon @click="deleteToDo" >
                                 <v-icon>mdi-delete-circle</v-icon>
                             </v-btn>
