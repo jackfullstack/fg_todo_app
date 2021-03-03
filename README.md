@@ -1,4 +1,4 @@
-# fg_todo_app
+# fr_todo_app
 A simple TODO app, where user can add a todo item with an associated priority to a todo-list, delete individual todo's from the list and clear/remove all todos from the list.
 
 Acc criteria:
